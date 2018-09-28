@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using FindTermInWebsite.Helpers;
-using HtmlAgilityPack;
-using Fizzler.Systems.HtmlAgilityPack;
+using FindTermInWebsite.Extensions;
+using FindTermInWebsite.WebCrawlers;
 
 namespace FindTermInWebsite
 {
@@ -15,6 +9,13 @@ namespace FindTermInWebsite
     {
         static void Main(string[] args)
         {
+            args = new string[3];
+            args[0] = "https://www.nestleprofessional.com.br";
+            args[1] = "Noblesse";
+            args[2] = "false";
+
+            var startTime = DateTime.Now;
+
             if (args.ElementAtOrDefault(0) == null || args.ElementAtOrDefault(1) == null || String.IsNullOrWhiteSpace(args[0]) || String.IsNullOrWhiteSpace(args[1]))
             {
                 Console.WriteLine("PARAMETROS INVALIDOS");
@@ -54,6 +55,8 @@ namespace FindTermInWebsite
             var directoryInfo = (new System.IO.FileInfo(filePath)).Directory;
             directoryInfo?.Create();
             System.IO.File.WriteAllText(filePath, $"Website: {uri.OriginalString}\r\nTermo: {term}\r\n\r\nPáginas encontradas:\r\n" + String.Join("\r\n", pagesFound));
+
+            Console.WriteLine($"Time spent: {(DateTime.Now - startTime):g}");
         }
     }
 }

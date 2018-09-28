@@ -10,4 +10,4 @@ echo.
 SET /p site="Website: "
 SET /p term="Termo: "
 
-start FindTermInWebsite.exe %site% %term%
+start FindTermInWebsite.exe %site% %term% false

@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 
-namespace FindTermInWebsite.Helpers
+namespace FindTermInWebsite.Extensions
 {
     public static class UriExtensions
     {
